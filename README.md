@@ -34,7 +34,7 @@ ansible-galaxy install -r requirements.yml
 
 ## Role Variables
 
-Available variables are along with default values [see defaults/main.yml](https://gitlab.com/estudosdevops/ansible/roles/envoyproxy/-/blob/master/defaults/main.yml)
+Available variables are along with default values see: [defaults/main.yml](https://gitlab.com/estudosdevops/ansible/roles/envoyproxy/-/blob/master/defaults/main.yml)
 
 ## Examplo playbook
 
