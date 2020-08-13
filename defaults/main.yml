@@ -1,0 +1,16 @@
+---
+# Package options
+envoy_package: getenvoy-envoy
+envoy_package_state: present
+
+# Service options.
+envoy_service_state: started
+envoy_service_enabled: yes
+envoy_restart_handler_state: restarted
+
+# Used only for Debian/Ubuntu. Switch 'stable' to 'edge' if needed.
+envoy_apt_release_channel: stable
+envoy_apt_arch: amd64
+envoy_apt_repository: "deb [arch={{ envoy_apt_arch }}] https://dl.bintray.com/tetrate/getenvoy-deb {{ ansible_distribution_release }} {{ envoy_apt_release_channel }}"
+envoy_apt_ignore_key_error: true
+envoy_apt_gpg_key: https://getenvoy.io/gpg

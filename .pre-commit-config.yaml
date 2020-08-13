@@ -1,0 +1,31 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    sha: v3.1.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: detect-private-key
+
+  - repo: local
+    hooks:
+      - id: yamllint
+        name: yamllint
+        description: This hook runs yamllint
+        entry: yamllint -c .yamllint .
+        language: python
+        files: \.(yaml|yml)$
+
+  - repo: https://github.com/ansible/ansible-lint.git
+    sha: v4.2.0
+    hooks:
+      - id: ansible-lint
+        files: \.(yaml|yml)$
+        args:
+          [
+            "--exclude=roles",
+            "--exclude=.travis.yml",
+            "--exclude=requirements.yml",
+          ]

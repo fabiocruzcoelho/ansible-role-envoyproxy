@@ -1,0 +1,10 @@
+---
+- name: Lint it
+  hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+  - name: Install Envoy Proxy
+    include_role:
+      name: envoyproxy

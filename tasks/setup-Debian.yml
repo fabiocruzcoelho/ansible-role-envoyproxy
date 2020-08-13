@@ -1,0 +1,34 @@
+---
+- name: Ensure dependencies are installed.
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+    state: present
+
+- name: Install envoy proxy.
+  block:
+    - name: (Debian) Add envoy apt key.
+      apt_key:
+        url: "{{ envoy_apt_gpg_key }}"
+        state: present
+      register: add_repository_key
+      ignore_errors: "{{ envoy_apt_ignore_key_error }}"
+
+    - name: Add Envoy apt key (alternative for older systems without SNI).
+      shell: >
+        curl -sSL {{ envoy_apt_gpg_key }} | sudo apt-key add -
+      args:
+        warn: false
+      when: add_repository_key is failed
+      tags: ["skip_ansible_lint"]
+
+    - name: (Debian) Add Getenvoy.io repo.
+      apt_repository:
+        repo: "{{ envoy_apt_repository }}"
+        state: present
+        filename: envoy
+        update_cache: true

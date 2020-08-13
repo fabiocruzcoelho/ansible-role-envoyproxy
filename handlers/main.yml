@@ -1,0 +1,7 @@
+---
+- name: restart envoy
+  systemd:
+    name: envoy
+    state: "{{ envoy_restart_handler_state }}"
+    daemon_reload: yes
+    enabled: "{{ envoy_service_enabled }}"

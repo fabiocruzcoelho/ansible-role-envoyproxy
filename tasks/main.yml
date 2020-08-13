@@ -1,0 +1,28 @@
+---
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure Envoy package is installed
+  apt:
+    name: "{{ envoy_package }}"
+    state: "{{ envoy_package_state }}"
+
+- name: "Create envoy directory"
+  file:
+    path: /etc/envoy/
+    state: directory
+    owner: root
+    group: root
+    mode: "0777"
+
+- name: Copy templates
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: "0777"
+  loop:
+    - { src: envoy.system.j2, dest: /etc/systemd/system/envoy.service }
+    - { src: envoy.yaml.j2, dest: /etc/envoy/envoy.yaml }
+  notify: restart envoy

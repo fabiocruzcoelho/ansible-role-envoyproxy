@@ -1,0 +1,29 @@
+---
+galaxy_info:
+  role_name: envoyproxy
+  author: Fabio Coelho
+  description: Create an Envoy Proxy
+  company: GPiT Consultoria
+
+  license: license (BSD, MIT)
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+        - focal
+
+  galaxy_tags:
+    - envoy
+    - proxy
+    - lb
+    - reverse
+
+dependencies: []
