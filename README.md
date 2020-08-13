@@ -16,7 +16,7 @@
   </a>
 </p>
 
-> Install Envoy Proxy
+> Install Envoy Proxy.
 
 ## Install
 
@@ -24,7 +24,7 @@
 
 ```yml
 ---
-- name: gitops
+- name: envoyproxy
   src: fabiocruzcoelho.envoyproxy
 ```
 
