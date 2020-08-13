@@ -16,7 +16,7 @@
   </a>
 </p>
 
-> Install Envoy Proxy.
+> Install Envoy Proxy
 
 ## Install
 
